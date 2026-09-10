@@ -1,4 +1,4 @@
-# lab_eda_gui.py
+# 24i-3060 app py LAB 4
 
 import streamlit as st
 import pandas as pd
