@@ -1,3 +1,5 @@
+# lab_eda_gui.py
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -62,11 +64,14 @@ if uploaded_file is not None:
 
     if column_type == "Numerical":
         # Histogram with seaborn
-        fig, ax = plt.subplots()
-        sns.histplot(df[column].dropna(), kde=True, ax=ax)
-        ax.set_title(f"Histogram of {column}")
-        ax.set_xlabel(column)
-        ax.set_ylabel("Frequency")
+        sns.set_style("whitegrid")
+        fig, ax = plt.subplots(figsize=(10, 5))
+        sns.histplot(df[column].dropna(), bins=30, kde=True, ax=ax, color="steelblue", edgecolor="white")
+        ax.set_title(f"Distribution of {column}", fontsize=14, fontweight="bold")
+        ax.set_xlabel(column, fontsize=12)
+        ax.set_ylabel("Frequency", fontsize=12)
+        ax.grid(axis="y", alpha=0.3)
+        fig.tight_layout()
         st.pyplot(fig)
     else:
         # Bar chart for categorical
